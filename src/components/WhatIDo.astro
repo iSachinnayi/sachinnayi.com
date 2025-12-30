@@ -1,0 +1,66 @@
+---
+const services = [
+  {
+    title: 'SEO Strategy',
+    description: 'Data-driven SEO strategies that actually move the needle. From technical audits to content optimization, I focus on sustainable organic growth.',
+    features: ['Technical SEO', 'Content Strategy', 'Keyword Research', 'Link Building']
+  },
+  {
+    title: 'Digital Marketing',
+    description: 'Full-funnel digital marketing that connects brands with their audience. Strategic thinking meets hands-on execution.',
+    features: ['Growth Strategy', 'Content Marketing', 'Analytics', 'Conversion Optimization']
+  },
+  {
+    title: 'AI & Automation',
+    description: 'Leveraging AI tools and automation to build efficient workflows. From content systems to product development.',
+    features: ['AI Workflows', 'Process Automation', 'Tool Integration', 'Scalable Systems']
+  }
+];
+---
+
+<section class="py-20 lg:py-28 bg-cream-100">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="max-w-2xl mb-14 animate-on-scroll">
+      <p class="text-copper-600 font-semibold text-xs uppercase tracking-[0.2em] mb-3">What I Do</p>
+      <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mb-4 leading-tight">
+        Helping brands grow in the digital space
+      </h2>
+      <p class="text-slate-800/70 leading-relaxed">
+        Combining years of hands-on experience with modern tools to deliver results that matter.
+      </p>
+    </div>
+    
+    <!-- Services Grid -->
+    <div class="grid lg:grid-cols-3 gap-8">
+      {services.map((service, index) => (
+        <div 
+          class="animate-on-scroll"
+          style={`animation-delay: ${0.1 * (index + 1)}s;`}
+        >
+          <h3 class="text-xl font-bold text-slate-900 mb-3">
+            {service.title}
+          </h3>
+          <p class="text-slate-800/70 leading-relaxed mb-5">
+            {service.description}
+          </p>
+          
+          <!-- Features list -->
+          <ul class="space-y-2">
+            {service.features.map(feature => (
+              <li class="flex items-center gap-2 text-sm text-slate-800">
+                <span class="w-1.5 h-1.5 rounded-full bg-copper-500"></span>
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+  
+  <!-- Bottom border -->
+  <div class="max-w-6xl mx-auto px-6 lg:px-8 mt-20">
+    <div class="h-px bg-gradient-to-r from-transparent via-slate-900/15 to-transparent"></div>
+  </div>
+</section>

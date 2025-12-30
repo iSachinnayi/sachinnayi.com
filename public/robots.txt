@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sachinnayi.com/sitemap-index.xml
+

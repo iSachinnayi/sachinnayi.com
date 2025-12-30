@@ -1,0 +1,166 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalURL?: string;
+  ogImage?: string;
+}
+
+const { 
+  title, 
+  description, 
+  canonicalURL = Astro.url.href,
+  ogImage = '/images/og-default.jpg'
+} = Astro.props;
+
+const siteTitle = title === 'Sachin Nayi' ? title : `${title} | Sachin Nayi`;
+
+// Schema.org Person markup for Knowledge Panel
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Sachin Nayi",
+  "url": "https://sachinnayi.com",
+  "image": "https://sachinnayi.com/images/sachin-nayi.jpg",
+  "email": "hello@sachinnayi.com",
+  "birthDate": "1997-08-20",
+  "jobTitle": ["Co-Founder", "SEO Specialist"],
+  "worksFor": [
+    {
+      "@type": "Organization",
+      "name": "Mindjek Technologies LLP"
+    },
+    {
+      "@type": "Organization", 
+      "name": "Phantom Rent A Car",
+      "url": "https://phantomrentcar.com"
+    }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Kadi",
+    "addressRegion": "Gujarat",
+    "addressCountry": "India"
+  },
+  "knowsAbout": ["SEO", "Digital Marketing", "AI Automation", "SaaS", "WordPress"],
+  "sameAs": [
+    "https://www.linkedin.com/in/sachinnayi/",
+    "https://www.facebook.com/iSachinnayi/",
+    "https://www.instagram.com/isachinnayi/",
+    "https://github.com/iSachinnayi"
+  ],
+  "nationality": {
+    "@type": "Country",
+    "name": "India"
+  }
+};
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Primary Meta Tags -->
+    <title>{siteTitle}</title>
+    <meta name="title" content={siteTitle} />
+    <meta name="description" content={description} />
+    <meta name="author" content="Sachin Nayi" />
+    
+    <!-- Canonical -->
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Sachin Nayi" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={siteTitle} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <!-- Schema.org Person markup -->
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+    
+    <style is:global>
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #181d29;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #c27c4e;
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #d4956a;
+      }
+      
+      /* Selection */
+      ::selection {
+        background: rgba(194, 124, 78, 0.3);
+        color: inherit;
+      }
+      
+      /* Smooth animations */
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      }
+      .animate-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body class="bg-cream-100 text-slate-850 font-sans antialiased">
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    
+    <script>
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+      
+      document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>

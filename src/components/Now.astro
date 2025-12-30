@@ -1,0 +1,70 @@
+---
+const nowItems = [
+  {
+    label: 'Working at',
+    value: 'Mindjek Technologies LLP',
+    description: 'Co-founder, focusing on digital marketing services and SaaS products'
+  },
+  {
+    label: 'Also',
+    value: 'SEO at Phantom Rent A Car',
+    description: 'Remote SEO Specialist handling organic growth strategy'
+  },
+  {
+    label: 'Building',
+    value: 'AI-first SaaS products',
+    description: 'Exploring AI-assisted workflows for product development'
+  },
+  {
+    label: 'Based in',
+    value: 'Kadi, Gujarat, India',
+    description: 'Working with clients globally'
+  }
+];
+---
+
+<section class="py-20 lg:py-28 bg-cream-200">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+      <!-- Left: Content -->
+      <div class="animate-on-scroll">
+        <p class="text-copper-600 font-semibold text-xs uppercase tracking-[0.2em] mb-3">Now</p>
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mb-6 leading-tight">
+          What I'm currently focused on
+        </h2>
+        <p class="text-slate-800/70 mb-6 leading-relaxed">
+          I believe in building things that last. Right now, my focus is on creating scalable digital products while helping businesses achieve sustainable growth through SEO and marketing.
+        </p>
+        <a 
+          href="/about" 
+          class="inline-flex items-center gap-2 text-copper-600 font-semibold hover:text-copper-700 transition-colors"
+        >
+          More about me
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+      
+      <!-- Right: Now Items -->
+      <div class="space-y-4">
+        {nowItems.map((item, index) => (
+          <div 
+            class="bg-cream-100 rounded-lg p-5 border border-cream-300 animate-on-scroll"
+            style={`animation-delay: ${0.1 * (index + 1)}s;`}
+          >
+            <p class="text-xs font-bold uppercase tracking-[0.15em] text-copper-600 mb-1">
+              {item.label}
+            </p>
+            <p class="text-lg font-bold text-slate-900 mb-1">
+              {item.value}
+            </p>
+            <p class="text-sm text-slate-800/70">
+              {item.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

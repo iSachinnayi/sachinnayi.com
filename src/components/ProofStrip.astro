@@ -1,0 +1,41 @@
+---
+const proofs = [
+  {
+    stat: '10+',
+    label: 'Years',
+    description: 'Building web projects'
+  },
+  {
+    stat: 'Global',
+    label: 'SEO',
+    description: 'Multilingual experience'
+  },
+  {
+    stat: 'Auto',
+    label: 'Systems',
+    description: 'Affiliate & automation'
+  },
+  {
+    stat: 'SaaS',
+    label: 'Products',
+    description: 'TradersGuide, NoAutoRenew'
+  }
+];
+---
+
+<section id="proof" class="py-16 lg:py-20 bg-cream-200 border-y border-cream-300">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      {proofs.map((proof, index) => (
+        <div 
+          class="text-center animate-on-scroll"
+          style={`animation-delay: ${0.1 * (index + 1)}s;`}
+        >
+          <div class="text-3xl lg:text-4xl font-extrabold text-slate-900 mb-1">{proof.stat}</div>
+          <div class="text-sm font-bold text-copper-600 uppercase tracking-wider mb-1">{proof.label}</div>
+          <div class="text-sm text-slate-800/70">{proof.description}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
