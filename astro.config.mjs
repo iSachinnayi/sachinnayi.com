@@ -6,6 +6,7 @@ export default defineConfig({
   site: 'https://sachinnayi.com',
   integrations: [tailwind(), sitemap()],
   output: 'static',
+  trailingSlash: 'always',
   build: {
     assets: 'assets'
   }

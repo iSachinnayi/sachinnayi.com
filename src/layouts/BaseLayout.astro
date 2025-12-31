@@ -57,6 +57,48 @@ const personSchema = {
     "name": "India"
   }
 };
+
+// WebSite Schema with SearchAction
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Sachin Nayi",
+  "url": "https://sachinnayi.com",
+  "description": "Personal website of Sachin Nayi - SEO Specialist & Digital Marketer from Kadi, Gujarat, India",
+  "publisher": {
+    "@type": "Person",
+    "name": "Sachin Nayi"
+  }
+};
+
+// SiteNavigation Schema
+const navigationSchema = {
+  "@context": "https://schema.org",
+  "@type": "SiteNavigationElement",
+  "name": "Main Navigation",
+  "hasPart": [
+    {
+      "@type": "WebPage",
+      "name": "Home",
+      "url": "https://sachinnayi.com/"
+    },
+    {
+      "@type": "WebPage",
+      "name": "About",
+      "url": "https://sachinnayi.com/about/"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Work",
+      "url": "https://sachinnayi.com/work/"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Contact",
+      "url": "https://sachinnayi.com/contact/"
+    }
+  ]
+};
 ---
 
 <!DOCTYPE html>
@@ -102,6 +144,12 @@ const personSchema = {
     <!-- Schema.org Person markup -->
     <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
     
+    <!-- WebSite Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    
+    <!-- SiteNavigation Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify(navigationSchema)} />
+    
     <style is:global>
       /* Custom scrollbar */
       ::-webkit-scrollbar {
@@ -143,6 +191,17 @@ const personSchema = {
     </main>
     <Footer />
     
+    <!-- Back to Top Button -->
+    <button 
+      id="back-to-top"
+      class="fixed bottom-6 right-6 z-50 w-12 h-12 bg-copper-500 text-white rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-copper-600 hover:scale-110 flex items-center justify-center"
+      aria-label="Back to top"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+      </svg>
+    </button>
+    
     <script>
       // Intersection Observer for scroll animations
       const observerOptions = {
@@ -160,6 +219,23 @@ const personSchema = {
       
       document.querySelectorAll('.animate-on-scroll').forEach(el => {
         observer.observe(el);
+      });
+      
+      // Back to Top Button
+      const backToTopBtn = document.getElementById('back-to-top');
+      
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+          backToTopBtn?.classList.remove('opacity-0', 'invisible');
+          backToTopBtn?.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn?.classList.add('opacity-0', 'invisible');
+          backToTopBtn?.classList.remove('opacity-100', 'visible');
+        }
+      });
+      
+      backToTopBtn?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     </script>
   </body>

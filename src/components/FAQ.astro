@@ -17,7 +17,24 @@ const faqs = [
     answer: 'Yes. I actively use AI tools in my workflows and can help integrate them into your processes—from content creation to product development.'
   }
 ];
+
+// FAQPage Schema for rich snippets
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
 ---
+
+<!-- FAQ Schema -->
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
 <section class="py-20 lg:py-28 bg-cream-200">
   <div class="max-w-3xl mx-auto px-6 lg:px-8">
