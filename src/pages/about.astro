@@ -79,13 +79,34 @@ const principles = [
       <div class="grid lg:grid-cols-3 gap-12 lg:gap-16">
         <!-- Main Content -->
         <div class="lg:col-span-2 space-y-10">
-          <!-- Photo Placeholder -->
-          <div class="aspect-[3/2] rounded-lg bg-cream-300 overflow-hidden animate-on-scroll border border-cream-400/50">
-            <img 
-              src="/images/placeholder.svg" 
-              alt="Sachin Nayi" 
-              class="w-full h-full object-cover"
-            />
+          <!-- Photo with polish - Mobile: large centered, Desktop: moderate right-aligned -->
+          <div class="relative animate-on-scroll flex justify-center lg:justify-start">
+            <div class="relative">
+              <!-- Decorative frame -->
+              <div class="absolute -top-3 -left-3 w-14 h-14 sm:w-16 sm:h-16 border-t-2 border-l-2 border-copper-500/50 rounded-tl-lg z-10"></div>
+              <div class="absolute -bottom-3 -right-3 w-14 h-14 sm:w-16 sm:h-16 border-b-2 border-r-2 border-copper-500/50 rounded-br-lg z-10"></div>
+              
+              <!-- Photo container - Mobile: 280px, Desktop: 320px -->
+              <div class="relative w-[280px] sm:w-[300px] lg:w-[320px] aspect-square rounded-lg overflow-hidden shadow-xl shadow-slate-900/20 border border-cream-300/50">
+                <img 
+                  src="/images/sachin-square.png" 
+                  alt="Sachin Nayi — SEO Specialist & Digital Marketer from Kadi, Gujarat, India"
+                  class="w-full h-full object-cover object-top"
+                />
+                
+                <!-- Subtle gradient overlay for depth -->
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent"></div>
+                
+                <!-- Grain overlay for polish -->
+                <div class="absolute inset-0 opacity-[0.06] pointer-events-none grain-overlay"></div>
+                
+                <!-- Vignette effect -->
+                <div class="absolute inset-0 shadow-[inset_0_0_60px_rgba(15,23,42,0.15)]"></div>
+              </div>
+              
+              <!-- Floating accent -->
+              <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2/3 h-0.5 bg-gradient-to-r from-transparent via-copper-500/40 to-transparent rounded-full"></div>
+            </div>
           </div>
           
           <!-- Story -->
@@ -271,7 +292,7 @@ const principles = [
       </p>
       <div class="flex flex-wrap justify-center gap-4 animate-on-scroll" style="animation-delay: 0.2s;">
         <a 
-          href="/contact" 
+          href="/contact/" 
           class="inline-flex items-center gap-2 px-6 py-3.5 bg-copper-500 text-cream-100 font-semibold rounded-lg hover:bg-copper-400 transition-all duration-300"
         >
           Get in touch
@@ -294,6 +315,15 @@ const principles = [
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  /* Film grain effect */
+  .grain-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    mix-blend-mode: overlay;
+  }
+</style>
 
 <script>
   document.querySelectorAll('.timeline-trigger').forEach(trigger => {
