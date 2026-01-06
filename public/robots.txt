@@ -1,5 +1,49 @@
+# robots.txt for sachinnayi.com
+# Allow ALL crawlers for maximum visibility and Knowledge Panel eligibility
+
 User-agent: *
 Allow: /
 
-Sitemap: https://sachinnayi.com/sitemap-index.xml
+# Explicitly allow search engines
+User-agent: Googlebot
+Allow: /
 
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Explicitly allow AI and extended crawlers (important for Knowledge Panel)
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Sitemap location
+Sitemap: https://sachinnayi.com/sitemap-index.xml
