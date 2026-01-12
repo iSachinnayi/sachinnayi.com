@@ -89,9 +89,9 @@ const principles = [
               <!-- Photo container - Mobile: 280px, Desktop: 320px -->
               <div class="relative w-[280px] sm:w-[300px] lg:w-[320px] aspect-square rounded-lg overflow-hidden shadow-xl shadow-slate-900/20 border border-cream-300/50">
                 <img 
-                  src="/images/sachin-square.png" 
+                  src="/images/Sachin Nayi.jpg" 
                   alt="Sachin Nayi — SEO Specialist & Digital Marketer from Kadi, Gujarat, India"
-                  class="w-full h-full object-cover object-top"
+                  class="w-full h-full object-cover object-center"
                 />
                 
                 <!-- Subtle gradient overlay for depth -->
@@ -244,6 +244,82 @@ const principles = [
             </div>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Family Section -->
+  <section class="py-16 lg:py-24 bg-slate-850 text-cream-100">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        
+        <!-- Photo: First on mobile and desktop (left side) -->
+        <div class="flex justify-center lg:justify-start animate-on-scroll">
+          <div class="relative">
+            <!-- Decorative frame elements -->
+            <div class="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-14 h-14 sm:w-20 sm:h-20 border-t-2 border-l-2 border-copper-500/50 rounded-tl-lg z-10"></div>
+            <div class="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 w-14 h-14 sm:w-20 sm:h-20 border-b-2 border-r-2 border-copper-500/50 rounded-br-lg z-10"></div>
+            
+            <!-- Photo container -->
+            <div class="relative rounded-xl overflow-hidden shadow-2xl shadow-slate-950/50 max-w-[300px] sm:max-w-[340px] lg:max-w-[380px]">
+              <img 
+                src="/images/Sachin Nayi Family Vertical.jpeg" 
+                alt="Sachin Nayi with wife Neha Tripathi and son Arjun"
+                class="w-full h-auto object-cover"
+                loading="lazy"
+              />
+              
+              <!-- Gradient overlay for depth -->
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent"></div>
+              
+              <!-- Grain overlay for polish -->
+              <div class="absolute inset-0 opacity-[0.05] pointer-events-none grain-overlay"></div>
+              
+              <!-- Subtle vignette -->
+              <div class="absolute inset-0 shadow-[inset_0_0_60px_rgba(15,23,42,0.2)]"></div>
+            </div>
+            
+            <!-- Floating accent -->
+            <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-2/3 h-0.5 bg-gradient-to-r from-transparent via-copper-500/50 to-transparent rounded-full"></div>
+          </div>
+        </div>
+        
+        <!-- Text Content -->
+        <div class="text-center lg:text-left animate-on-scroll" style="animation-delay: 0.15s;">
+          <p class="text-copper-400 font-semibold text-xs uppercase tracking-[0.2em] mb-3">Beyond Work</p>
+          <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 leading-tight">
+            Family First
+          </h2>
+          
+          <div class="space-y-4 text-cream-200/70 leading-relaxed max-w-lg mx-auto lg:mx-0">
+            <p>
+              Behind every late-night project and early-morning strategy session is a family that keeps me grounded. My wife <strong class="text-white">Neha Tripathi</strong> isn't just my partner in life—she's also in the same industry, working in digital marketing and SEO. We often find ourselves brainstorming ideas over dinner and debugging campaigns on weekends.
+            </p>
+            
+            <p>
+              Our 2-year-old son <strong class="text-white">Arjun</strong> brings endless energy and joy to our home. He's already showing curiosity about the screens we work on—though his current expertise is mostly in closing browser tabs at the worst possible moments.
+            </p>
+            
+            <p class="text-cream-200/50 text-sm">
+              Having a family in the same field means we understand each other's work pressures, celebrate the wins together, and support each other through the challenges. It's a blessing that makes this journey more meaningful.
+            </p>
+          </div>
+          
+          <!-- Family Quick Facts -->
+          <div class="mt-8 grid grid-cols-2 gap-4 max-w-sm mx-auto lg:mx-0">
+            <div class="bg-white/5 rounded-lg p-4 border border-white/10">
+              <p class="text-xs text-copper-400 uppercase tracking-wider mb-1 font-semibold">Wife</p>
+              <p class="text-white font-semibold">Neha Tripathi</p>
+              <p class="text-xs text-cream-200/50 mt-0.5">Digital Marketer</p>
+            </div>
+            <div class="bg-white/5 rounded-lg p-4 border border-white/10">
+              <p class="text-xs text-copper-400 uppercase tracking-wider mb-1 font-semibold">Son</p>
+              <p class="text-white font-semibold">Arjun</p>
+              <p class="text-xs text-cream-200/50 mt-0.5">2 years old</p>
+            </div>
+          </div>
+        </div>
+        
       </div>
     </div>
   </section>
