@@ -78,22 +78,39 @@ const principles = [
     <div class="max-w-6xl mx-auto px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         
-        <!-- Photo Side - Clean transparent cutout -->
+        <!-- Photo Side with animations -->
         <div class="flex justify-center animate-on-scroll order-2 lg:order-1">
-          <div class="relative">
-            <!-- Background glow -->
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[350px] sm:h-[350px] bg-copper-500/20 rounded-full blur-[80px]"></div>
+          <div class="relative about-photo-container">
+            <!-- Background glow - pulsing -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] bg-copper-500/20 rounded-full blur-[80px] glow-pulse"></div>
             
-            <!-- Glowing base -->
-            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[180px] sm:w-[240px] h-4 bg-copper-500/40 blur-xl rounded-full"></div>
-            <div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-[140px] sm:w-[180px] h-2 bg-copper-400/50 blur-md rounded-full"></div>
+            <!-- Animated arc -->
+            <svg class="arc-decoration-about" viewBox="0 0 300 300" fill="none">
+              <circle cx="150" cy="150" r="140" stroke="url(#arc-grad-about)" stroke-width="1" stroke-dasharray="6 10" class="arc-spin"/>
+              <defs>
+                <linearGradient id="arc-grad-about" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="rgba(194,124,78,0.5)"/>
+                  <stop offset="50%" stop-color="rgba(194,124,78,0.1)"/>
+                  <stop offset="100%" stop-color="rgba(194,124,78,0.5)"/>
+                </linearGradient>
+              </defs>
+            </svg>
             
-            <!-- Transparent Photo -->
-            <img 
-              src="/images/Sachin Nayi.png" 
-              alt="Sachin Nayi — SEO Specialist & Digital Marketer from Kadi, Gujarat, India"
-              class="relative z-10 w-[260px] sm:w-[300px] lg:w-[340px] h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.4)] photo-float"
-            />
+            <!-- Floating particles -->
+            <div class="about-particle about-particle-1"></div>
+            <div class="about-particle about-particle-2"></div>
+            <div class="about-particle about-particle-3"></div>
+            
+            <!-- Photo with fade -->
+            <div class="relative photo-float">
+              <img 
+                src="/images/Sachin Nayi.png" 
+                alt="Sachin Nayi — SEO Specialist & Digital Marketer from Kadi, Gujarat, India"
+                class="relative z-10 w-[240px] sm:w-[280px] lg:w-[320px] h-auto object-contain"
+              />
+              <!-- Gradient fade at bottom -->
+              <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-850 via-slate-850/70 to-transparent z-20 pointer-events-none"></div>
+            </div>
           </div>
         </div>
         
@@ -423,14 +440,97 @@ const principles = [
     mix-blend-mode: overlay;
   }
   
+  /* Photo container */
+  .about-photo-container {
+    position: relative;
+  }
+  
   /* Photo float animation */
   .photo-float {
-    animation: photoFloat 6s ease-in-out infinite;
+    animation: photoFloat 5s ease-in-out infinite;
   }
   
   @keyframes photoFloat {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  /* Glow pulse */
+  .glow-pulse {
+    animation: glowPulse 4s ease-in-out infinite;
+  }
+  
+  @keyframes glowPulse {
+    0%, 100% { opacity: 0.15; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.3; transform: translate(-50%, -50%) scale(1.05); }
+  }
+  
+  /* Arc decoration */
+  .arc-decoration-about {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 110%;
+    height: 110%;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  
+  .arc-spin {
+    animation: arcSpin 30s linear infinite;
+    transform-origin: center;
+  }
+  
+  @keyframes arcSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  /* Floating particles */
+  .about-particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: aboutParticleFloat 3.5s ease-in-out infinite;
+  }
+  
+  .about-particle-1 {
+    width: 5px;
+    height: 5px;
+    background: rgba(194, 124, 78, 0.8);
+    top: 15%;
+    right: 10%;
+    animation-delay: 0s;
+  }
+  
+  .about-particle-2 {
+    width: 4px;
+    height: 4px;
+    background: rgba(245, 158, 11, 0.7);
+    top: 35%;
+    left: 5%;
+    animation-delay: 1s;
+  }
+  
+  .about-particle-3 {
+    width: 3px;
+    height: 3px;
+    background: rgba(194, 124, 78, 0.6);
+    bottom: 35%;
+    right: 5%;
+    animation-delay: 2s;
+  }
+  
+  @keyframes aboutParticleFloat {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translateY(-15px) scale(1.3);
+      opacity: 1;
+    }
   }
 </style>
 
